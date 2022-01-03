@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/drawable-xxxhdpi/bg_button_login.xml" value="0.20092592592592592" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/drawable-xxxhdpi/bg_dialog.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/dialog_view.xml" value="0.176" />
         <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/fragment_benevits.xml" value="0.24010416666666667" />
-        <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/fragment_login.xml" value="0.136" />
         <entry key="..\:/Users/carlo/AndroidStudioProjects/socioinfonavitandroidnew/app/src/main/res/layout/fragment_splash.xml" value="0.24010416666666667" />
       </map>
     </option>

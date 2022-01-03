@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.socio_infonavit_android_new.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BenevitsFragment : Fragment(R.layout.fragment_benevits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
