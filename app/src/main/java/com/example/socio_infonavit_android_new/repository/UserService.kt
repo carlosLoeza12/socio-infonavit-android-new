@@ -1,12 +1,13 @@
 package com.example.socio_infonavit_android_new.repository
 
+import com.example.socio_infonavit_android_new.data.model.Member
 import com.example.socio_infonavit_android_new.data.model.User
-import com.example.socio_infonavit_android_new.data.model.member
 import retrofit2.http.Body
-import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface UserService {
 
-    @GET("login")
-    suspend fun makeLogin(@Body user: User): member
+    @POST("login")
+    suspend fun makeLoginService(@Body User: User): Member
+
 }

@@ -12,8 +12,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.socio_infonavit_android_new.R
 import com.example.socio_infonavit_android_new.core.Result
+import com.example.socio_infonavit_android_new.data.model.DataUser
 import com.example.socio_infonavit_android_new.data.model.User
 import com.example.socio_infonavit_android_new.databinding.DialogViewBinding
 import com.example.socio_infonavit_android_new.databinding.FragmentLoginBinding
@@ -42,15 +44,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         validateEdtPassword()
         createDialog()
 
-
-
-
         binding.btnEnter.setOnClickListener {
-            //val action = LoginFragmentDirections.actionLoginFragmentToBenevitsFragment()
-            //findNavController().navigate(action)
-           // showDialog(getString(R.string.login_error))
-            makeLogin(User("prueba@nextia.mx","PruebaNextia2021"))
 
+            userEmail = binding.edtMail.text.toString().trim()
+            userPassword = binding.edtPassword.text.toString().trim()
+            makeLogin(User(DataUser(userEmail,userPassword)))
         }
         bindingDialog.btnOk.setOnClickListener {
             dialog.dismiss()
@@ -88,7 +86,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 if (userEmail.isEmpty() || userPassword.isEmpty()) {
                     Log.e("a", "vacios")
                 } else {
-                    Log.e("a", "los datos son: $userEmail $userPassword")
+                    makeLogin(User(DataUser(userEmail,userPassword)))
                 }
 
             }
@@ -116,12 +114,22 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     }
 
-    private fun makeLogin(user: User){
-        viewModel.makeLogin(user).observe(viewLifecycleOwner, Observer {
+    private fun makeLogin(User: User){
+        viewModel.makeLogin(User).observe(viewLifecycleOwner, Observer {
             when(it){
-                is Result.Loading ->{}
-                is Result.Success -> {Log.e("data","${it.data.name}")}
-                is Result.Failure -> {}
+                is Result.Loading ->{
+                    binding.progressLogin.visibility = View.VISIBLE
+                }
+                is Result.Success -> {
+                    binding.progressLogin.visibility = View.GONE
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBenevitsFragment())
+                    Log.e("data", it.data.id)
+
+                }
+                is Result.Failure -> {
+                    binding.progressLogin.visibility = View.GONE
+                    showDialog(requireContext().getString(R.string.login_error))
+                }
             }
         })
 
