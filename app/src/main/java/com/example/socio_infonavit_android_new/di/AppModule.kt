@@ -1,6 +1,8 @@
 package com.example.socio_infonavit_android_new.di
 
 import com.example.socio_infonavit_android_new.application.AppConstants
+import com.example.socio_infonavit_android_new.data.model.MovieList
+import com.example.socio_infonavit_android_new.repository.MovieService
 import com.example.socio_infonavit_android_new.repository.UserService
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -19,7 +21,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl(AppConstants.BASE_URL)
+        .baseUrl(AppConstants.BASE_URL_SOCIO)
         .client(AppConstants.okHttp.build())
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .build()
@@ -27,5 +29,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMovieService(retrofit: Retrofit): MovieService = retrofit.create(MovieService::class.java)
 
 }

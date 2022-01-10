@@ -10,6 +10,7 @@
 
     <color name="red">#EC5056</color>
     <color name="gray">#9F9F9F</color>
+    <color name="shadow_black">#7C000000</color>
 
 
 </resources>
