@@ -36,11 +36,15 @@ class BenevitsFragment : Fragment(R.layout.fragment_benevits), MovieAdapter.OnMo
         viewModel.getMovies().observe(viewLifecycleOwner, Observer {
             when(it){
                 is  Result.Loading -> {
-
+                    binding.progressMovie.visibility = View.VISIBLE
                 }
                 is Result.Success ->{
                     Log.e("results", it.data.results.toString() )
+                    binding.progressMovie.visibility = View.GONE
                     recyclerConfig(it.data.results)
+                }
+                is Result.Failure ->{
+                    binding.progressMovie.visibility = View.GONE
                 }
             }
         })

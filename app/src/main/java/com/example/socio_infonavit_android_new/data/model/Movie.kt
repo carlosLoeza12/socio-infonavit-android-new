@@ -17,3 +17,5 @@ data class Movie(val id: Int,
 )
 
 data class MovieList(val results: List<Movie> = listOf())
+
+

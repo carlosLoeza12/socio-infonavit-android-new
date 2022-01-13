@@ -54,7 +54,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             dialog.dismiss()
         }
 
-
     }
 
     private var watcher: TextWatcher = object : TextWatcher{

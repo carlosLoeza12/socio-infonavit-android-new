@@ -8,5 +8,4 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(private val userDataSource: UserDataSource): UserRepository {
 
     override suspend fun makeLogin(User: User): Member = userDataSource.makeLogin(User)
-
 }

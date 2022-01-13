@@ -1,9 +1,7 @@
 package com.example.socio_infonavit_android_new.di
 
 import com.example.socio_infonavit_android_new.application.AppConstants
-import com.example.socio_infonavit_android_new.data.model.MovieList
-import com.example.socio_infonavit_android_new.repository.MovieService
-import com.example.socio_infonavit_android_new.repository.UserService
+import com.example.socio_infonavit_android_new.repository.Service
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -28,10 +26,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+    fun provideUserService(retrofit: Retrofit): Service = retrofit.create(Service::class.java)
 
-    @Singleton
-    @Provides
-    fun provideMovieService(retrofit: Retrofit): MovieService = retrofit.create(MovieService::class.java)
 
 }
