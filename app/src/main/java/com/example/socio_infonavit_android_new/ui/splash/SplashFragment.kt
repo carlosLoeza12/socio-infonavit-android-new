@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.socio_infonavit_android_new.R
+import com.example.socio_infonavit_android_new.application.BaseApplication.Companion.prefs
 import com.example.socio_infonavit_android_new.databinding.FragmentSplashBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,12 +34,18 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
-                val action = SplashFragmentDirections.actionSplashFragmentToLoginFragment()
-                findNavController().navigate(action)
+                validateSesion()
             }
         }
         timer.start()
 
+    }
 
+    private fun validateSesion(){
+       if(prefs.getSesion()){
+           findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToBenevitsFragment())
+       }else{
+           findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+       }
     }
 }

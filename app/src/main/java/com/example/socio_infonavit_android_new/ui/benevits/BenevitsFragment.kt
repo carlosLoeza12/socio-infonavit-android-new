@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -29,6 +30,7 @@ class BenevitsFragment : Fragment(R.layout.fragment_benevits), MovieAdapter.OnMo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBenevitsBinding.bind(view)
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
         getMovies()
     }
 

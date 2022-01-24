@@ -19,6 +19,9 @@
             app:popExitAnim="@anim/slide_to_rigth"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_benevitsFragment"
+            app:destination="@id/benevitsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

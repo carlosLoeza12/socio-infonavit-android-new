@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.socio_infonavit_android_new.R
+import com.example.socio_infonavit_android_new.application.BaseApplication.Companion.prefs
 import com.example.socio_infonavit_android_new.core.Result
 import com.example.socio_infonavit_android_new.data.model.DataUser
 import com.example.socio_infonavit_android_new.data.model.User
@@ -48,7 +49,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             userEmail = binding.edtMail.text.toString().trim()
             userPassword = binding.edtPassword.text.toString().trim()
-            makeLogin(User(DataUser(userEmail,userPassword)))
+            savePreferences(userEmail)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBenevitsFragment())
+            //makeLogin(User(DataUser(userEmail,userPassword)))
         }
         bindingDialog.btnOk.setOnClickListener {
             dialog.dismiss()
@@ -121,6 +124,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
                 is Result.Success -> {
                     binding.progressLogin.visibility = View.GONE
+                    savePreferences(it.data.name)
+
                     findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToBenevitsFragment())
                     Log.e("data", it.data.id)
 
@@ -132,5 +137,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
         })
 
+    }
+
+    private fun savePreferences(nameUser: String){
+        prefs.saveName(nameUser)
+        prefs.saveSesion(true)
     }
 }
