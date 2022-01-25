@@ -2,16 +2,22 @@ package com.example.socio_infonavit_android_new.ui.benevits
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.socio_infonavit_android_new.R
 import com.example.socio_infonavit_android_new.core.Result
+import com.example.socio_infonavit_android_new.core.extensions.loadDialog
 import com.example.socio_infonavit_android_new.data.model.Movie
 import com.example.socio_infonavit_android_new.databinding.FragmentBenevitsBinding
 import com.example.socio_infonavit_android_new.presentation.MovieViewModel
@@ -29,6 +35,16 @@ class BenevitsFragment : Fragment(R.layout.fragment_benevits), MovieAdapter.OnMo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentBenevitsBinding.bind(view)
+
+        val toolbar = binding.toolbar
+        if(activity is AppCompatActivity){
+            (activity as AppCompatActivity).setSupportActionBar(toolbar)
+            (activity as AppCompatActivity).setTitle(R.string.movie)
+        }
+
+        //show item toolbar
+        setHasOptionsMenu(true);
+
         getMovies()
     }
 
@@ -76,6 +92,26 @@ class BenevitsFragment : Fragment(R.layout.fragment_benevits), MovieAdapter.OnMo
             movie.release_date
         )
         findNavController().navigate(action)
-
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.itemClose ->{
+               requireContext().loadDialog(getString(R.string.close_app),2)
+            }
+            R.id.itemSettings -> {
+                Log.e("aaa","settings")
+            }
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 }

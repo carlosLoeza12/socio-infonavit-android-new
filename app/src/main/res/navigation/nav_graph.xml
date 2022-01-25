@@ -19,6 +19,11 @@
             app:popExitAnim="@anim/slide_to_rigth"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_benevitsFragment"
+            app:destination="@id/benevitsFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -47,6 +52,10 @@
             app:exitAnim="@anim/slide_to_left"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_rigth" />
+        <action
+            android:id="@+id/action_benevitsFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
