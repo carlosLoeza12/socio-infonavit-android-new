@@ -5,7 +5,6 @@ import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.socio_infonavit_android_new.R
 import com.example.socio_infonavit_android_new.application.BaseApplication.Companion.prefs
@@ -23,7 +22,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in)
         binding.imgLogo.startAnimation(animation)
 
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
         timer()
     }
 

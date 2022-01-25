@@ -25,6 +25,8 @@ class Prefs(val context: Context) {
         return  storage.getBoolean(SHARED_USER_SESION, false)
     }
 
-
+    fun wipe(){
+        storage.edit().clear().apply()
+    }
 
 }
